@@ -1,0 +1,38 @@
+title: "Mike Malburg"
+description: "Personal website of Mike Malburg"
+baseurl: ""
+url: "https://mikemalburg.com"
+
+theme: null
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+collections:
+  pages:
+    output: true
+    path: ""
+  posts:
+    output: true
+    path: "posts"
+
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      show_date: true
+
+sass:
+  style: compressed
+
+palette:
+  primary: "#2b5a8e"
+  secondary: "#6c757d"
+  accent: "#fd7e14"
