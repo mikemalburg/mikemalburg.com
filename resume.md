@@ -13,7 +13,7 @@ title: Resume
 
   <div class="resume-section">
     <h2>Professional Summary</h2>
-    <p>Software engineer and consultant with expertise in... [to be filled]</p>
+    <p>Software engineer and consultant with expertise in building scalable applications and embedded systems.</p>
   </div>
 
   <div class="resume-section">
