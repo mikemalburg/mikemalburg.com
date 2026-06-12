@@ -27,4 +27,17 @@ This is the personal website repository for Mike Malburg.
 - `assets/` - Images, CSS, JS
 
 ### Deployment
-Changes pushed to `main` branch automatically trigger GitHub Actions to build and deploy to GitHub Pages.
+
+**GitHub Pages** (Automatic)
+```
+git push origin main
+```
+
+**AWS S3** (Manual)
+1. Install AWS CLI and configure: `aws configure`
+2. Run: `bash deploy.sh` (Linux/Mac) or `./deploy.sh`
+   - On Windows: install WSL or use PowerShell equivalent commands
+
+Site URL after deploy: `http://mikemalburg.com.s3-website-us-east-1.amazonaws.com`
+
+To add a custom domain, point your DNS to the S3 bucket endpoint.
