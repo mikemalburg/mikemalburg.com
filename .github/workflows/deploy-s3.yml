@@ -10,15 +10,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install Ruby
+      - name: Install dependencies
         run: |
           sudo apt-get update && sudo apt-get install -y ruby-full build-essential zlib1g-dev
-          gem install bundler jekyll --user-install
-          echo "$HOME/.gem/ruby/3.2.0/bin" >> $GITHUB_PATH
+          gem install bundler jekyll --user-install --install-dir /home/runner/.gem
+          export PATH="/home/runner/.gem/bin:$PATH"
+          echo "/home/runner/.gem/bin" >> $GITHUB_PATH
       - name: Build site
         run: |
           bundle config set path vendor/bundle
-          bundle install
+         bundle install
           bundle exec jekyll build
       - name: Deploy to S3
         env:
