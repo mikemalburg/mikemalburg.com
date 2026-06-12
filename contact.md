@@ -8,7 +8,7 @@ title: Contact
   <div class="contact-info">
     <p>Email: <a href="mailto:mikemalburg@gmail.com">mikemalburg@gmail.com</a></p>
     <p>Phone: <em>[To be added]</em></p>
-    <p>Location: Holt, Michigan</p>
+    <p>Location: Okemos, Michigan</p>
   </div>
 
   <div class="social-links">

@@ -6,22 +6,21 @@ title: Resume
 <div class="resume">
   <h1>Mike Malburg - Resume</h1>
   <div class="resume-content">
-    <p>Download my resume:</p>
     <a href="{{ site.baseurl }}/assets/mike-malburg-resume.pdf" class="btn" download>Download PDF</a>
     <a href="{{ site.baseurl }}/assets/mike-malburg-resume.docx" class="btn btn-outline" download>Download Word</a>
   </div>
 
   <div class="resume-section">
     <h2>Professional Summary</h2>
-    <p>Software engineer and consultant with expertise in building scalable applications and embedded systems. Passionate about coding, electronics, and continuous learning.</p>
+    <p>I am a detail-driven and industry immersed software development professional dedicated to solving complex business problems, improving customer experiences, and automating processes. My ability to continually learn and apply new technology and inspire others allows me to present and develop creative solutions while assisting less experienced developers gain skills and grow.</p>
   </div>
 
   <div class="resume-section">
     <h2>Experience</h2>
     <div class="resume-item">
-      <h3>Software Engineer</h3>
+      <h3>Senior Software Engineer, Lead</h3>
       <p class="resume-date">TechSmith | Okemos, MI</p>
-      <p>Building software solutions and providing technical expertise.</p>
+      <p>Building software solutions and providing technical leadership.</p>
     </div>
   </div>
 
@@ -37,6 +36,11 @@ title: Resume
     <h2>Skills</h2>
     <ul class="skills-list">
       <li>Software Development</li>
+      <li>Technical Leadership</li>
+      <li>Problem Solving</li>
+      <li>Process Automation</li>
+      <li>Customer Experience</li>
+      <li>Technical Mentorship</li>
       <li>Embedded Systems</li>
       <li>Electronics</li>
       <li>Consulting</li>
