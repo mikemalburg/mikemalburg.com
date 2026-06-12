@@ -21,4 +21,5 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        run: aws s3 sync _site/ s3://mikemalburg.com --delete && aws s3api put-bucket-policy --bucket mikemalburg.com --policy file://s3-policy.json
+          AWS_DEFAULT_REGION: us-east-1
+        run: aws s3 sync _site/ s3://mikemalburg.com --delete
