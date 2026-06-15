@@ -29,12 +29,12 @@ defaults:
       layout: "post"
       show_date: true
 
- sass:
-   style: compressed
+sass:
+  style: compressed
 
- remove_ext: true
+remove_ext: true
 
- palette:
+palette:
   primary: "#2b5a8e"
   secondary: "#6c757d"
   accent: "#fd7e14"
