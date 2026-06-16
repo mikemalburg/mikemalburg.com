@@ -3,10 +3,10 @@ C:/Ruby32-x64/bin/ruby.exe extconf.rb
 creating Makefile
 
 current directory: C:/ai/projects/mikemalburg.com/vendor/bundle/ruby/3.2.0/gems/http_parser.rb-0.8.1/ext/ruby_http_parser
-make DESTDIR\= sitearchdir\=./.gem.20260615-7364-ro13xa sitelibdir\=./.gem.20260615-7364-ro13xa clean
+make DESTDIR\= sitearchdir\=./.gem.20260615-28664-wdcw20 sitelibdir\=./.gem.20260615-28664-wdcw20 clean
 
 current directory: C:/ai/projects/mikemalburg.com/vendor/bundle/ruby/3.2.0/gems/http_parser.rb-0.8.1/ext/ruby_http_parser
-make DESTDIR\= sitearchdir\=./.gem.20260615-7364-ro13xa sitelibdir\=./.gem.20260615-7364-ro13xa
+make DESTDIR\= sitearchdir\=./.gem.20260615-28664-wdcw20 sitelibdir\=./.gem.20260615-28664-wdcw20
 generating ruby_http_parser-x64-mingw-ucrt.def
 compiling ruby_http_parser.c
 ruby_http_parser.c: In function 'Init_ruby_http_parser':
