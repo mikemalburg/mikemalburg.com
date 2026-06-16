@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> - Mike Malburg</title>
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="/" class="logo">Mike Malburg</a>
+      <ul>
+        <li><a href="/" >Home</a></li>
+        <li><a href="/about.html" >About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1 id="caveman-help">Caveman Help</h1>
+
+<p>Display this reference card when invoked. One-shot — do NOT change mode, write flag files, or persist anything. Output in caveman style.</p>
+
+<h2 id="modes">Modes</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Mode</th>
+      <th>Trigger</th>
+      <th>What change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Lite</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">/caveman lite</code></td>
+      <td>Drop filler. Keep sentence structure.</td>
+    </tr>
+    <tr>
+      <td><strong>Full</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">/caveman</code></td>
+      <td>Drop articles, filler, pleasantries, hedging. Fragments OK. Default.</td>
+    </tr>
+    <tr>
+      <td><strong>Ultra</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">/caveman ultra</code></td>
+      <td>Extreme compression. Bare fragments. Tables over prose.</td>
+    </tr>
+    <tr>
+      <td><strong>Wenyan-Lite</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">/caveman wenyan-lite</code></td>
+      <td>Classical Chinese style, light compression.</td>
+    </tr>
+    <tr>
+      <td><strong>Wenyan-Full</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">/caveman wenyan</code></td>
+      <td>Full 文言文. Maximum classical terseness.</td>
+    </tr>
+    <tr>
+      <td><strong>Wenyan-Ultra</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">/caveman wenyan-ultra</code></td>
+      <td>Extreme. Ancient scholar on a budget.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Mode stick until changed or session end.</p>
+
+<h2 id="skills">Skills</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Skill</th>
+      <th>Trigger</th>
+      <th>What it do</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>caveman-commit</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">/caveman-commit</code></td>
+      <td>Terse commit messages. Conventional Commits. ≤50 char subject.</td>
+    </tr>
+    <tr>
+      <td><strong>caveman-review</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">/caveman-review</code></td>
+      <td>One-line PR comments: <code class="language-plaintext highlighter-rouge">L42: bug: user null. Add guard.</code></td>
+    </tr>
+    <tr>
+      <td><strong>caveman-compress</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">/caveman-compress &lt;file&gt;</code></td>
+      <td>Compress .md files to caveman prose. Saves ~46% input tokens.</td>
+    </tr>
+    <tr>
+      <td><strong>caveman-help</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">/caveman-help</code></td>
+      <td>This card.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="deactivate">Deactivate</h2>
+
+<p>Say “stop caveman” or “normal mode”. Resume anytime with <code class="language-plaintext highlighter-rouge">/caveman</code>.</p>
+
+<h2 id="configure-default-mode">Configure Default Mode</h2>
+
+<p>Default mode = <code class="language-plaintext highlighter-rouge">full</code>. Change it:</p>
+
+<p><strong>Environment variable</strong> (highest priority):</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">CAVEMAN_DEFAULT_MODE</span><span class="o">=</span>ultra
+</code></pre></div></div>
+
+<p><strong>Config file</strong> (<code class="language-plaintext highlighter-rouge">~/.config/caveman/config.json</code>):</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w"> </span><span class="nl">"defaultMode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lite"</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Set <code class="language-plaintext highlighter-rouge">"off"</code> to disable auto-activation on session start. User can still activate manually with <code class="language-plaintext highlighter-rouge">/caveman</code>.</p>
+
+<p>Resolution: env var &gt; config file &gt; <code class="language-plaintext highlighter-rouge">full</code>.</p>
+
+<h2 id="more">More</h2>
+
+<p>Full docs: https://github.com/JuliusBrussee/caveman</p>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Mike Malburg</p>
+    <p>Design: OpenCode-inspired palette</p>
+  </footer>
+</body>
+</html>

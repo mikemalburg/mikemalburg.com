@@ -11,14 +11,14 @@ checking for cpuid.h... yes
 creating Makefile
 
 current directory: C:/ai/projects/mikemalburg.com/vendor/bundle/ruby/3.1.0/gems/json-2.19.9/ext/json/ext/parser
-make DESTDIR\= sitearchdir\=./.gem.20260615-17504-nt32oj sitelibdir\=./.gem.20260615-17504-nt32oj clean
+make DESTDIR\= sitearchdir\=./.gem.20260615-24876-hs71do sitelibdir\=./.gem.20260615-24876-hs71do clean
 
 current directory: C:/ai/projects/mikemalburg.com/vendor/bundle/ruby/3.1.0/gems/json-2.19.9/ext/json/ext/parser
-make DESTDIR\= sitearchdir\=./.gem.20260615-17504-nt32oj sitelibdir\=./.gem.20260615-17504-nt32oj
+make DESTDIR\= sitearchdir\=./.gem.20260615-24876-hs71do sitelibdir\=./.gem.20260615-24876-hs71do
 generating parser-x64-mingw-ucrt.def
 compiling parser.c
 linking shared-object json/ext/parser.so
 
 current directory: C:/ai/projects/mikemalburg.com/vendor/bundle/ruby/3.1.0/gems/json-2.19.9/ext/json/ext/parser
-make DESTDIR\= sitearchdir\=./.gem.20260615-17504-nt32oj sitelibdir\=./.gem.20260615-17504-nt32oj install
-/usr/bin/install -c -m 0755 parser.so ./.gem.20260615-17504-nt32oj/json/ext
+make DESTDIR\= sitearchdir\=./.gem.20260615-24876-hs71do sitelibdir\=./.gem.20260615-24876-hs71do install
+/usr/bin/install -c -m 0755 parser.so ./.gem.20260615-24876-hs71do/json/ext

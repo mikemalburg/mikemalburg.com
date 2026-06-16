@@ -27,15 +27,15 @@ checking for RUBY_TYPED_EMBEDDABLE in ruby.h... no
 creating Makefile
 
 current directory: C:/ai/projects/mikemalburg.com/vendor/bundle/ruby/3.1.0/gems/bigdecimal-4.1.2/ext/bigdecimal
-make DESTDIR\= sitearchdir\=./.gem.20260615-17504-hf73h8 sitelibdir\=./.gem.20260615-17504-hf73h8 clean
+make DESTDIR\= sitearchdir\=./.gem.20260615-24876-o2vqdy sitelibdir\=./.gem.20260615-24876-o2vqdy clean
 
 current directory: C:/ai/projects/mikemalburg.com/vendor/bundle/ruby/3.1.0/gems/bigdecimal-4.1.2/ext/bigdecimal
-make DESTDIR\= sitearchdir\=./.gem.20260615-17504-hf73h8 sitelibdir\=./.gem.20260615-17504-hf73h8
+make DESTDIR\= sitearchdir\=./.gem.20260615-24876-o2vqdy sitelibdir\=./.gem.20260615-24876-o2vqdy
 generating bigdecimal-x64-mingw-ucrt.def
 compiling bigdecimal.c
 compiling missing.c
 linking shared-object bigdecimal.so
 
 current directory: C:/ai/projects/mikemalburg.com/vendor/bundle/ruby/3.1.0/gems/bigdecimal-4.1.2/ext/bigdecimal
-make DESTDIR\= sitearchdir\=./.gem.20260615-17504-hf73h8 sitelibdir\=./.gem.20260615-17504-hf73h8 install
-/usr/bin/install -c -m 0755 bigdecimal.so ./.gem.20260615-17504-hf73h8
+make DESTDIR\= sitearchdir\=./.gem.20260615-24876-o2vqdy sitelibdir\=./.gem.20260615-24876-o2vqdy install
+/usr/bin/install -c -m 0755 bigdecimal.so ./.gem.20260615-24876-o2vqdy

@@ -1,0 +1,9 @@
+{
+  "name": "fix-write-tool-schema-error",
+  "description": "Fix write tool returning SchemaError(Missing key 'content') error",
+  "error": "SchemaError: Missing key 'content' when using the write tool",
+  "solution": "Use PowerShell Set-Content instead of the broken write tool for file creation/modification",
+  "when_to_use": "Whenever write tool fails with SchemaError, use Set-Content command as workaround",
+  "command": "Set-Content \"string\" -Path \"file\"",
+  "python_alternative": "use Python scripts in scripts/ subdirectory"
+}

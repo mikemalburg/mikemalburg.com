@@ -1,0 +1,12 @@
+{
+  "name": "fix-native-extension-compilation-failures",
+  "description": "Fix http_parser.rb, bigdecimal, prism failing to compile with Ruby 3.2 on Windows",
+  "error": "Failed to build gem native extension for http_parser.rb, bigdecimal, or prism",
+  "solution": "Move em-websocket to dev group in Gemfile (only needed for jekyll serve --watch). It's not needed for builds and causes compilation issues.",
+  "when_to_use": "When you see native extension compilation failures during bundle install on Windows with Ruby 3.2,
+especially for http_parser.rb, bigdecimal, or prism gems",
+  "Gemfile_changes": {
+    "move_em-websocket_from_default_to_development_group": true
+  },
+  "command": "# No command needed - edit Gemfile to move em-websocket to development group"
+}

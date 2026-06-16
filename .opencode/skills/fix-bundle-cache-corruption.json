@@ -1,0 +1,13 @@
+{
+  "name": "fix-bundle-cache-corruption",
+  "description": "Fix Bundler loading old gems from wrong Ruby version causing cache corruption",
+  "error": "Bundler mixing gems from different Ruby versions, gem load errors for previously installed packages",
+  "solution": "Delete vendor/bundle and Gemfile.lock, re-run bundle install with correct Ruby path",
+  "when_to_use": "When bundle install or bundle exec shows gems from wrong Ruby version,
+or you see gem loading errors after switching Ruby versions",
+  "commands": [
+    "Remove-Item -Recurse -Force vendor\\bundle",
+    "Remove-Item Gemfile.lock",
+    "C:\\Ruby31-x64\\bin\\ruby.exe -S \"C:\\Ruby31-x64\\bin\\bundle\" install --path vendor/bundle"
+  ]
+}

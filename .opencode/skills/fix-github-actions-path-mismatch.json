@@ -1,0 +1,8 @@
+{
+  "name": "fix-github-actions-path-mismatch",
+  "description": "Fix bundle exec running Ruby 3.2's kernel_require instead of 3.1 in GitHub Actions CI",
+  "error": "C:/Ruby32-x64/lib/ruby/3.2.0/rubygems/kernel_require.rb:32:in equire': cannot load such file -- 3.2/bundler",
+  "solution": "Use explicit Ruby path: C:\\Ruby31-x64\\bin\\ruby.exe -S \"C:\\Ruby31-x64\\bin\\bundle\"",
+  "when_to_use": "When GitHub Actions CI fails with Ruby version mismatch in bundle exec",
+  "command": "C:\\Ruby31-x64\\bin\\ruby.exe -S \"C:\\Ruby31-x64\\bin\\bundle\" exec jekyll build"
+}

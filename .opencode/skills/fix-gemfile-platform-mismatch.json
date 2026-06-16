@@ -1,0 +1,8 @@
+{
+  "name": "fix-gemfile-platform-mismatch",
+  "description": "Fix Gemfile.lock platform mismatch when CI runs on Linux but lock file was generated on Windows",
+  "error": "Bundler::GemNotFound: Could not find gem 'x64-mingw-ucrt' in the Gems list",
+  "solution": "Run: bundle lock --add-platform x86_64-linux",
+  "when_to_use": "When you see Bundler::GemNotFound errors about missing x64-mingw-ucrt platform, or when CI fails because Gemfile.lock has Windows platform but server runs Linux",
+  "command": "bundle lock --add-platform x86_64-linux"
+}

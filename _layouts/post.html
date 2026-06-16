@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} - Mike Malburg</title>
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="{{ site.baseurl }}/" class="logo">Mike Malburg</a>
+      <ul>
+        <li><a href="{{ site.baseurl }}/" {% if page.url == "/" %}class="active"{% endif %}>Home</a></li>
+        <li><a href="{{ site.baseurl }}/about.html" {% if page.url == "/about" %}class="active"{% endif %}>About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <article class="post">
+      <h1>{{ page.title }}</h1>
+      {% if page.show_date %}
+      <p class="post-date">{{ page.date | date: "%B %-d, %Y" }}</p>
+      {% endif %}
+      {{ content }}
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; {{ site.time | date: "%Y" }} Mike Malburg</p>
+  </footer>
+</body>
+</html>

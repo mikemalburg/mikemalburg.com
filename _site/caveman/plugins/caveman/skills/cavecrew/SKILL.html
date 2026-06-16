@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> - Mike Malburg</title>
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="/" class="logo">Mike Malburg</a>
+      <ul>
+        <li><a href="/" >Home</a></li>
+        <li><a href="/about.html" >About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <p>Cavecrew = three subagent presets that emit caveman output. Same job as Anthropic defaults (<code class="language-plaintext highlighter-rouge">Explore</code>, edit-style agents, reviewer); difference is the tool-result they return is compressed, so main context shrinks per delegation.</p>
+
+<h2 id="when-to-use-cavecrew-vs-alternatives">When to use cavecrew vs alternatives</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Task</th>
+      <th>Use</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>“Where is X defined / what calls Y / list uses of Z”</td>
+      <td><code class="language-plaintext highlighter-rouge">cavecrew-investigator</code></td>
+    </tr>
+    <tr>
+      <td>Same but you also want suggestions/architecture commentary</td>
+      <td><code class="language-plaintext highlighter-rouge">Explore</code> (vanilla)</td>
+    </tr>
+    <tr>
+      <td>Surgical edit, ≤2 files, scope obvious</td>
+      <td><code class="language-plaintext highlighter-rouge">cavecrew-builder</code></td>
+    </tr>
+    <tr>
+      <td>New feature / 3+ files / cross-cutting refactor</td>
+      <td>Main thread or <code class="language-plaintext highlighter-rouge">feature-dev:code-architect</code></td>
+    </tr>
+    <tr>
+      <td>Review diff, branch, or file for bugs</td>
+      <td><code class="language-plaintext highlighter-rouge">cavecrew-reviewer</code></td>
+    </tr>
+    <tr>
+      <td>Deep code review with rationale + alternatives</td>
+      <td><code class="language-plaintext highlighter-rouge">Code Reviewer</code> (vanilla)</td>
+    </tr>
+    <tr>
+      <td>One-line answer you already know</td>
+      <td>Main thread, no subagent</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Rule of thumb: <strong>if you’d want the subagent’s output in 1/3 the tokens, pick cavecrew. If you’d want prose, pick vanilla.</strong></p>
+
+<h2 id="why-this-exists-the-real-win">Why this exists (the real win)</h2>
+
+<p>Subagent tool results get injected into main context verbatim. A vanilla <code class="language-plaintext highlighter-rouge">Explore</code> that returns 2k tokens of prose costs 2k tokens of main-context budget every time. The same finding from <code class="language-plaintext highlighter-rouge">cavecrew-investigator</code> returns ~700 tokens. Across 20 delegations in one session that’s the difference between context exhaustion and finishing the task.</p>
+
+<h2 id="output-contracts">Output contracts</h2>
+
+<p>What main thread can rely on per agent:</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">cavecrew-investigator</code></strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;Header&gt;:
+- path:line — `symbol` — short note
+totals: &lt;counts&gt;.
+</code></pre></div></div>
+<p>Or <code class="language-plaintext highlighter-rouge">No match.</code> Always file-path-first, line-number-attached, backticked symbols. Safe to grep with <code class="language-plaintext highlighter-rouge">path:\d+</code>.</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">cavecrew-builder</code></strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;path:line-range&gt; — &lt;change ≤10 words&gt;.
+verified: &lt;re-read OK | mismatch @ path:line&gt;.
+</code></pre></div></div>
+<p>Or one of: <code class="language-plaintext highlighter-rouge">too-big.</code> / <code class="language-plaintext highlighter-rouge">needs-confirm.</code> / <code class="language-plaintext highlighter-rouge">ambiguous.</code> / <code class="language-plaintext highlighter-rouge">regressed.</code> (terminal first token).</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">cavecrew-reviewer</code></strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>path:line: &lt;emoji&gt; &lt;severity&gt;: &lt;problem&gt;. &lt;fix&gt;.
+totals: N🔴 N🟡 N🔵 N❓
+</code></pre></div></div>
+<p>Or <code class="language-plaintext highlighter-rouge">No issues.</code> Findings sorted file → line ascending.</p>
+
+<h2 id="chaining-patterns">Chaining patterns</h2>
+
+<p><strong>Locate → fix → verify</strong> (most common):</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">cavecrew-investigator</code> returns site list.</li>
+  <li>Main thread picks 1-2 sites, hands paths to <code class="language-plaintext highlighter-rouge">cavecrew-builder</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">cavecrew-reviewer</code> audits the diff.</li>
+</ol>
+
+<p><strong>Parallel scout</strong> (when investigation is broad):
+Spawn 2-3 <code class="language-plaintext highlighter-rouge">cavecrew-investigator</code> calls in one message (different angles: defs vs callers vs tests). Aggregate in main thread.</p>
+
+<p><strong>Single-shot edit</strong> (when site is already known):
+Skip investigator. Hand exact path:line to <code class="language-plaintext highlighter-rouge">cavecrew-builder</code> directly.</p>
+
+<h2 id="what-not-to-do">What NOT to do</h2>
+
+<ul>
+  <li>Don’t use <code class="language-plaintext highlighter-rouge">cavecrew-builder</code> when you don’t already know the file. Spawn investigator first or main thread will eat tokens passing context.</li>
+  <li>Don’t chain <code class="language-plaintext highlighter-rouge">cavecrew-investigator → cavecrew-builder</code> for a 5-file refactor. Builder will return <code class="language-plaintext highlighter-rouge">too-big.</code> and you’ll have wasted a turn.</li>
+  <li>Don’t ask <code class="language-plaintext highlighter-rouge">cavecrew-reviewer</code> for “general feedback” — it returns findings only, no architecture opinions. Use <code class="language-plaintext highlighter-rouge">Code Reviewer</code> for that.</li>
+  <li>Don’t expect prose. Cavecrew output is structured, sometimes terse to the point of cryptic. If a human will read it directly, paraphrase.</li>
+</ul>
+
+<h2 id="auto-clarity-inherited">Auto-clarity (inherited)</h2>
+
+<p>Subagents drop caveman → normal English for security warnings, irreversible-action confirmations, and any output where fragment ambiguity could be misread. Resume caveman after.</p>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Mike Malburg</p>
+    <p>Design: OpenCode-inspired palette</p>
+  </footer>
+</body>
+</html>

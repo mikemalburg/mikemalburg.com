@@ -1,0 +1,10 @@
+{
+  "name": "fix-jekyll-seo-tag-missing-dependency",
+  "description": "Fix LoadError for jekyll-seo-tag gem not in Gemfile even though referenced in _config.yml",
+  "error": "LoadError: Cannot load such file -- jekyll-seo-tag",
+  "solution": "Add gem \"jekyll-seo-tag\", \"~> 2.8\" to the Gemfile (was in _config.yml but not Gemfile)",
+  "when_to_use": "When jekyll build fails with LoadError for jekyll-seo-tag,
+or gem not found errors for plugins listed in _config.yml",
+  "Gemfile_addition": "gem \"jekyll-seo-tag\", \"~> 2.8\"",
+  "command": "bundle add jekyll-seo-tag --version '~> 2.8'"
+}
